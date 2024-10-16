@@ -1,5 +1,5 @@
-import { TODOS_URL } from "@/api";
-import { Todo } from "@/types";
+import { TODOS_URL } from "../api";
+import { Todo } from "../types";
 import { http, HttpResponse } from "msw";
 
 const mockedTodos = [
