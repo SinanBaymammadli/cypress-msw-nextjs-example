@@ -1,9 +1,10 @@
-import "@/styles/globals.css";
+import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const mockingEnabled = !!process.env.NEXT_PUBLIC_API_MOCKING;
+  console.log(process.env.NEXT_PUBLIC_API_MOCKING);
   const [shouldRender, setShouldRender] = useState(!mockingEnabled);
 
   useEffect(() => {

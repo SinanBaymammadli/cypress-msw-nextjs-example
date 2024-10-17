@@ -1,9 +1,9 @@
-import { mockTodos } from "../../mocks/handlers";
+import { mockName, mockTodos } from "../../mocks/handlers";
 
 describe("template spec", () => {
   it("passes without mocks", () => {
     cy.visit("http://localhost:3003");
-    cy.contains("Hello world!");
+    cy.contains("Hello Sinan!");
     cy.contains(
       "laboriosam mollitia et enim quasi adipisci quia provident illum"
     );
@@ -18,11 +18,12 @@ describe("template spec", () => {
           title: "New todo",
           completed: false,
         },
-      ])
+      ]),
+      mockName("Test")
     );
 
     cy.visit("http://localhost:3003");
-    cy.contains("Hello world!");
+    cy.contains("Hello Test!");
     cy.contains("New todo");
   });
 });

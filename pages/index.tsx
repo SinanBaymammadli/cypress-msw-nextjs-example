@@ -1,5 +1,5 @@
-import { TODOS_URL } from "@/api";
-import { Todo } from "@/types";
+import { TODOS_URL } from "../api";
+import { Todo } from "../types";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
@@ -9,11 +9,19 @@ async function fetchTodos() {
   return json as Array<Todo>;
 }
 
+async function fetchHello() {
+  const response = await fetch("/api/hello");
+  const json = await response.json();
+  return json as { name: string };
+}
+
 export default function Home() {
   const [todos, setTodos] = useState<Array<Todo>>([]);
+  const [name, setName] = useState("");
 
   useEffect(() => {
     fetchTodos().then((todos) => setTodos(todos));
+    fetchHello().then((hello) => setName(hello.name));
   }, []);
 
   return (
@@ -25,7 +33,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Hello world!</h1>
+        <h1>Hello {name}!</h1>
 
         <ul>
           {todos?.map((todo) => {

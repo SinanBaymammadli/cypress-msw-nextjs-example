@@ -41,4 +41,10 @@ export function mockTodos(todos: Array<Todo> = mockedTodos) {
   });
 }
 
-export const handlers = [mockTodos()];
+export function mockName(name = "Sinan") {
+  return http.get("/api/hello", () => {
+    return HttpResponse.json({ name });
+  });
+}
+
+export const handlers = [mockTodos(), mockName()];
