@@ -10,7 +10,17 @@ declare global {
 }
 
 Cypress.on("test:before:run:async", async () => {
-  await worker.start();
+  await worker.start({
+    serviceWorker: {
+      url: "/order/mockServiceWorker.js",
+      options: {
+        // Override the scope to the root ("/").
+        // By default, the worker is scoped to its location on your server,
+        // which in this case would be "/prefix".
+        scope: "/",
+      },
+    },
+  });
 });
 
 Cypress.on("test:before:run", () => {
