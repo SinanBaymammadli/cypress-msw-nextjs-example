@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { TODOS_URL } from "../api";
 import { Todo } from "../types";
 import Head from "next/head";
@@ -34,6 +35,8 @@ export default function Home() {
       </Head>
       <main>
         <h1>Hello {name}!</h1>
+
+        <Link href="/planning">Planning</Link>
 
         <ul>
           {todos?.map((todo) => {

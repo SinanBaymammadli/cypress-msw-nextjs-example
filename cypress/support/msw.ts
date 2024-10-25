@@ -11,6 +11,7 @@ declare global {
 
 Cypress.on("test:before:run:async", async () => {
   await worker.start({
+    onUnhandledRequest: "bypass",
     serviceWorker: {
       url: "/order/mockServiceWorker.js",
       options: {
